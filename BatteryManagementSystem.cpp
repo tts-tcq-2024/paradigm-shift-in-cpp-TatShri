@@ -8,12 +8,16 @@ void printMessage(const string& range, const string& message ) {
     std::cout << languagetranslate(range) << ": " << languagetranslate(message) << std::endl;
 }
 
-bool checkInRange(float value, float min, float max, const string& rangeType) {
-  // Use ternary operator to determine the message and print it
-    string message = (value < min || value > max) ? "out" : "in";
+// Function to check if a value is within a specified range and print the appropriate message
+bool checkInRange(float value, float min, float max, const std::string& rangeType) {
+    // Determine the message based on the range check
+    std::string message = (value < min || value > max) ? "out" : "in";
+    
+    // Print the message
     printMessage(rangeType, message);
-
-    return true;
+    
+    // Return true if the message indicates the value is "in", false otherwise
+    return message == "in";
 }
 
 bool TemperatureIsOk(float temperature) {
