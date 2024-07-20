@@ -5,7 +5,7 @@
 #include <map>
 
 // Declare the languagetranslation_map and current language
-extern std::map<std::string, std::map<std::string, std::string>> languagetranslation_map;
+extern const std::map<std::string, std::map<std::string, std::string>> languagetranslation_map;
 extern std::string outputlanguage;
 
 // Function to set the output language
