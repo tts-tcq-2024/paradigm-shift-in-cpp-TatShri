@@ -1,31 +1,31 @@
 #include <assert.h>
 #include <iostream>
+#include <map>
+#include "LanguageTranslate.h"
 using namespace std;
 
-void printMessage(const string& message) {
-    cout << message << endl;
+void printMessage(const string& range, const string& message ) {
+    std::cout << languagetranslate(range) << ": " << languagetranslate(message) << std::endl;
 }
 
 bool checkInRange(float value, float min, float max, const string& rangeType) {
-    if (value < min || value > max) {
-        printMessage(rangeType + " out of range!");
-        return false;
-    } else {
-        printMessage(rangeType + " in range.");
-    }
+  // Use ternary operator to determine the message and print it
+    string message = (value < min || value > max) ? "out" : "in";
+    printMessage(rangeType, message);
+
     return true;
 }
 
 bool TemperatureIsOk(float temperature) {
-    return checkInRange(temperature, 0, 45, "Temperature");
+    return checkInRange(temperature, 0, 45, "Temp");
 }
 
 bool socIsOk(float soc) {
-    return checkInRange(soc, 20, 80, "State of Charge");
+    return checkInRange(soc, 20, 80, "SOC");
 }
 
 bool chargeRateIsOk(float chargeRate) {
-    return checkInRange(chargeRate, 0, 0.8, "Charge Rate");
+    return checkInRange(chargeRate, 0, 0.8, "CR");
 }
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
@@ -36,6 +36,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 }
 
 int main() {
+    setoutputlanguage("german");
     assert(batteryIsOk(25, 70, 0.7) == true);  // All values within range
     assert(batteryIsOk(50, 85, 0) == false);   // Temperature and SOC out of range
     assert(batteryIsOk(0, 20, 0.8) == true);   // All values at the boundary of their range
