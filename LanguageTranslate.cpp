@@ -3,12 +3,10 @@
 #include "LanguageTranslate.h"
 
 //Defining the translation map
-static const std::map<std::string, std::map<std::string, std::string>> languagetranslation_map() {
-    return {
+static const std::map<std::string, std::map<std::string, std::string>> languagetranslation_map{
         {"english", {{"Temp", "Temperature"}, {"SOC", "State Of Charge"}, {"CR", "Charge Rate"}, {"out", "is out of range"}, {"in", "is in range"}}},
         {"german", {{"Temp", "Temperatur"}, {"SOC", "Ladezustand"}, {"CR", "Laderate"}, {"out", "liegt außerhalb des Bereichs"}, {"in", "liegt im Bereich"}}}
     };
-}
 
 std::string outputlanguage = "english"; // Default language is English
 
