@@ -1,46 +1,51 @@
 #include <assert.h>
 #include <iostream>
-#include <map>
 #include "LanguageTranslate.h"
 using namespace std;
 
-void printMessage(const string& range, const string& message ) {
-    std::cout << languagetranslate(range) << ": " << languagetranslate(message) << std::endl;
+
+void printMessage(const string& range, const string& message) {
+    std::cout << languagetranslate(range, messageLanguage) << ": " << languagetranslate(message, messageLanguage) << std::endl;
 }
 
-// Function to check if a value is within a specified range and print the appropriate message
-bool checkInRange(float value, float min, float max, const std::string& rangeType) {
-    // Determine the message based on the range check
-    std::string message = (value < min || value > max) ? "out" : "in";
-    
-    // Print the message
-    printMessage(rangeType, message);
-    
-    // Return true if the message indicates the value is "in", false otherwise
-    return message == "in";
+// Function to check if a value is within a specified range
+bool checkInRange(float value, float min, float max) {
+    if(min!=-1000.0f){
+        return (value >= min && value <= max);
+    }
+    else{
+        return (value <= max);
+    }
 }
 
 bool TemperatureIsOk(float temperature) {
-    return checkInRange(temperature, 0, 45, "Temp");
+    return checkInRange(temperature, 0, 45);
 }
 
 bool socIsOk(float soc) {
-    return checkInRange(soc, 20, 80, "SOC");
+    return checkInRange(soc, 20, 80);
 }
 
 bool chargeRateIsOk(float chargeRate) {
-    return checkInRange(chargeRate, 0, 0.8, "CR");
+    return checkInRange(chargeRate, -1000.0f, 0.8);
 }
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
     bool tempIsOk = TemperatureIsOk(temperature);
-    bool stcIsOk = socIsOk(soc);
+    printMessage("Temp", tempIsOk ? "in" : "out");
+
+    bool socIsOk = socIsOk(soc);
+    printMessage("SOC", socIsOk ? "in" : "out");
+
     bool crIsOk = chargeRateIsOk(chargeRate);
-    return (tempIsOk && stcIsOk && crIsOk);
+    printMessage("CR", crIsOk ? "in" : "out");
+
+    return (tempIsOk && socIsOk && crIsOk);
 }
 
 int main() {
-    setoutputlanguage("german");
+    messageLanguage = Language::German;
+    
     assert(batteryIsOk(25, 70, 0.7) == true);  // All values within range
     assert(batteryIsOk(50, 85, 0) == false);   // Temperature and SOC out of range
     assert(batteryIsOk(0, 20, 0.8) == true);   // All values at the boundary of their range
@@ -49,4 +54,7 @@ int main() {
     assert(batteryIsOk(25, 70, 0.9) == false); // Charge Rate out of range
     assert(batteryIsOk(45, 80, 0.8) == true);  // All values at the upper boundary of their range
     assert(batteryIsOk(0, 20, 0) == true);     // All values at the lower boundary of their range
+
+    std::cout << "All tests passed!" << std::endl;
+    return 0;
 }
