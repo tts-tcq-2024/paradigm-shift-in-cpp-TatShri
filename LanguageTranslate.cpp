@@ -8,16 +8,13 @@ const std::map<std::string, std::map<std::string, std::string>> languagetranslat
         {"german", {{"Temp", "Temperatur"}, {"SOC", "Ladezustand"}, {"CR", "Laderate"}, {"out", "liegt außerhalb des Bereichs"}, {"in", "liegt im Bereich"}}}
     };
 
-std::string outputlanguage = "english"; // Default language is English
-
-void setoutputlanguage(const std::string& language) {
-    outputlanguage = language;
-}
+// Default language is English
+Language messageLanguage = Language::English;
 
 std::string languagetranslate(const std::string& key) {
     // Check if the current language has a translation for the given key
-    if (languagetranslation_map.find(outputlanguage) != languagetranslation_map.end()) {
-        const auto& translations = languagetranslation_map.at(outputlanguage);
+    if (languagetranslation_map.find(messageLanguage) != languagetranslation_map.end()) {
+        const auto& translations = languagetranslation_map.at(messageLanguage);
         if (translations.find(key) != translations.end()) {
             return translations.at(key);
         }
