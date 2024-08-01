@@ -11,10 +11,11 @@ const std::map<std::string, std::map<std::string, std::string>> translateMessage
 // Default language is English
 Language messageLanguage = Language::English;
 
-std::string messageTranslate(const std::string& key) {
+// Function to translate messages
+std::string messageTranslate(const std::string& key, Language lang) {
     // Check if the current language has a translation for the given key
-    if (translateMessage.find(messageLanguage) != translateMessage.end()) {
-        const auto& translations = translateMessage.at(messageLanguage);
+    if (translateMessage.find(lang) != translateMessage.end()) {
+        const auto& translations = translateMessage.at(lang);
         if (translations.find(key) != translations.end()) {
             return translations.at(key);
         }
