@@ -1,4 +1,4 @@
-#include <assert.h>
+#include <cassert>
 #include <iostream>
 #include <vector>
 #include <tuple>
@@ -6,12 +6,13 @@
 
 using namespace std;
 
-preferredLanguage  messageLanguage;
+preferredLanguage messageLanguage = preferredLanguage::English;
 
 // Print the status of whether a parameter is in range
 void printRangeStatus(const string& parameter, bool isInRange) {
-    std::string rangeStatus = isInRange ? "in" : "out";
-    std::cout << messageTranslate(parameter, messageLanguage) << ": " << messageTranslate(rangeStatus, messageLanguage) << std::endl;
+    std::string rangeStatus = isInRange ? "is in range" : "is out of range";
+    std::cout << messageTranslate(parameter, messageLanguage) << ": " 
+              << messageTranslate(rangeStatus, messageLanguage) << std::endl;
 }
 
 // Check if a value is within a specified range
@@ -36,7 +37,6 @@ bool isChargeRateInRange(float chargeRate) {
 
 // Check if all battery parameters are within range
 bool isBatteryOk(float temperature, float soc, float chargeRate) {
-    // Vector of tuples to hold the parameter name and check result
     std::vector<std::tuple<std::string, bool>> checks = {
         {"Temperature", isTemperatureInRange(temperature)},
         {"State of Charge", isSocInRange(soc)},
@@ -45,10 +45,9 @@ bool isBatteryOk(float temperature, float soc, float chargeRate) {
 
     bool allChecksPassed = true;
 
-    // Iterate through each check, print message and update the overall status
     for (const auto& check : checks) {
-        const std::string& parameter = std::get<0>(check); // Get parameter name
-        bool isInRange = std::get<1>(check); // Get check result
+        const std::string& parameter = std::get<0>(check);
+        bool isInRange = std::get<1>(check);
         printRangeStatus(parameter, isInRange);
         allChecksPassed = allChecksPassed && isInRange;
     }
@@ -57,7 +56,7 @@ bool isBatteryOk(float temperature, float soc, float chargeRate) {
 }
 
 int main() {
-    messageLanguage = preferredLanguage ::German;
+    messageLanguage = preferredLanguage::German;
 
     assert(isBatteryOk(25, 70, 0.7) == true);
     assert(isBatteryOk(50, 85, 0) == false);
