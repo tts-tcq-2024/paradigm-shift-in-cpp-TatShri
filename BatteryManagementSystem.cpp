@@ -10,7 +10,7 @@ preferredLanguage messageLanguage = preferredLanguage::English;
 
 // Print the status of whether a parameter is in range
 void printRangeStatus(const string& parameter, bool isInRange) {
-    std::string rangeStatus = isInRange ? "is in range" : "is out of range";
+    std::string rangeStatus = isInRange ? "in" : "out";
     std::cout << messageTranslate(parameter, messageLanguage) << ": " 
               << messageTranslate(rangeStatus, messageLanguage) << std::endl;
 }
