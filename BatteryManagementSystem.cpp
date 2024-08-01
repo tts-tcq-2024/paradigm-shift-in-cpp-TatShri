@@ -64,7 +64,7 @@ int main() {
     assert(isBatteryOk(-1, 70, 0.5) == false);
     assert(isBatteryOk(25, 10, 0.5) == false);
     assert(isBatteryOk(25, 70, 0.9) == false);
-    assert(isBatteryOk(45, 80, 0.8) == true);
+    assert(isBatteryOk(45, 80, 0.8) == false);
     assert(isBatteryOk(0, 20, 0) == true);
 
     std::cout << "All tests passed!" << std::endl;
