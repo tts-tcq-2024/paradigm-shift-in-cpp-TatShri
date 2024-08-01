@@ -1,9 +1,9 @@
 #include <string>
 #include <map>
-#include "LanguageTranslate.h"
+#include "messageTranslate.h"
 
 //Defining the translation map
-const std::map<std::string, std::map<std::string, std::string>> languagetranslation_map{
+const std::map<std::string, std::map<std::string, std::string>> translateMessage{
         {"english", {{"Temp", "Temperature"}, {"SOC", "State Of Charge"}, {"CR", "Charge Rate"}, {"out", "is out of range"}, {"in", "is in range"}}},
         {"german", {{"Temp", "Temperatur"}, {"SOC", "Ladezustand"}, {"CR", "Laderate"}, {"out", "liegt außerhalb des Bereichs"}, {"in", "liegt im Bereich"}}}
     };
@@ -11,10 +11,10 @@ const std::map<std::string, std::map<std::string, std::string>> languagetranslat
 // Default language is English
 Language messageLanguage = Language::English;
 
-std::string languagetranslate(const std::string& key) {
+std::string messageTranslate(const std::string& key) {
     // Check if the current language has a translation for the given key
-    if (languagetranslation_map.find(messageLanguage) != languagetranslation_map.end()) {
-        const auto& translations = languagetranslation_map.at(messageLanguage);
+    if (translateMessage.find(messageLanguage) != translateMessage.end()) {
+        const auto& translations = translateMessage.at(messageLanguage);
         if (translations.find(key) != translations.end()) {
             return translations.at(key);
         }
