@@ -58,3 +58,15 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+
+## Extending and Refactoring
+
+Extension 2: Support a language in addition to English
+
+Our market has expanded to German-speaking countries! Switch the language of the printed messages based on a global variable.
+
+Use Google translate if you aren't familiar with German.
+
+Keep in mind: We could add more languages in future. Minimize the code-change required.
+  
