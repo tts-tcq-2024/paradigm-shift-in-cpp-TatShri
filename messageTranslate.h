@@ -10,6 +10,6 @@ enum class preferredLanguage {
 };
 
 // Function to translate messages
-std::string languagetranslate(const std::string& key);
+std::string messageTranslate(const std::string& key);
 
 #endif // LANGUAGETRANSLATE_H
