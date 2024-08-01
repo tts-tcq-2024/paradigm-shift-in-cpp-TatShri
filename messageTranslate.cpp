@@ -9,7 +9,7 @@ const std::map<std::string, std::map<std::string, std::string>> translateMessage
     };
 
 // Default language is English
-Language messageLanguage = Language::English;
+preferredLanguage  messageLanguage = preferredLanguage ::English;
 
 // Function to translate messages
 std::string messageTranslate(const std::string& key, Language lang) {
