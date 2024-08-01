@@ -4,8 +4,8 @@
 
 // Defining the translation map
 const std::map<std::string, std::map<std::string, std::string>> translateMessage{
-    {"english", {{"Temperature", "Temperature"}, {"State of Charge", "State Of Charge"}, {"Charge Rate", "Charge Rate"}, {"is out of range", "is out of range"}, {"is in range", "is in range"}}},
-    {"german", {{"Temperature", "Temperatur"}, {"State of Charge", "Ladezustand"}, {"Charge Rate", "Laderate"}, {"is out of range", "liegt außerhalb des Bereichs"}, {"is in range", "liegt im Bereich"}}}
+    {"english", {{"Temperature", "Temperature"}, {"State of Charge", "State Of Charge"}, {"Charge Rate", "Charge Rate"}, {"out", "is out of range"}, {"in", "is in range"}}},
+    {"german", {{"Temperature", "Temperatur"}, {"State of Charge", "Ladezustand"}, {"Charge Rate", "Laderate"}, {"out", "liegt außerhalb des Bereichs"}, {"in", "liegt im Bereich"}}}
 };
 
 // Helper function to convert preferredLanguage enum to string
