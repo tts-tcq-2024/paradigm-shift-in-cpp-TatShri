@@ -11,7 +11,7 @@ Language messageLanguage;
 // Print the status of whether a parameter is in range
 void printRangeStatus(const string& parameter, bool isInRange) {
     std::string rangeStatus = isInRange ? "in" : "out";
-    std::cout << languagetranslate(parameter, messageLanguage) << ": " << languagetranslate(rangeStatus, messageLanguage) << std::endl;
+    std::cout << messageTranslate(parameter, messageLanguage) << ": " << messageTranslate(rangeStatus, messageLanguage) << std::endl;
 }
 
 // Check if a value is within a specified range
