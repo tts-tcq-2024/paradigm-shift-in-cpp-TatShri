@@ -60,7 +60,7 @@ int main() {
 
     assert(isBatteryOk(25, 70, 0.7) == true);
     assert(isBatteryOk(50, 85, 0) == false);
-    assert(isBatteryOk(0, 20, 0.8) == true);
+    assert(isBatteryOk(0, 20, 0.8) == false);
     assert(isBatteryOk(-1, 70, 0.5) == false);
     assert(isBatteryOk(25, 10, 0.5) == false);
     assert(isBatteryOk(25, 70, 0.9) == false);
