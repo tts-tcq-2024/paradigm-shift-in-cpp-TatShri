@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Language messageLanguage;
+preferredLanguage  messageLanguage;
 
 // Print the status of whether a parameter is in range
 void printRangeStatus(const string& parameter, bool isInRange) {
